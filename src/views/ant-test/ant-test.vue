@@ -17,6 +17,22 @@
       <a-col class="align-center"
              :span="12">col-12</a-col>
     </a-row>
+    <div class="display-f align-center">
+      <a-breadcrumb separator=">">
+        <a-breadcrumb-item>Home</a-breadcrumb-item>
+        <a-breadcrumb-item href="">First-Step</a-breadcrumb-item>
+        <a-breadcrumb-item href="">Second-Step</a-breadcrumb-item>
+      </a-breadcrumb>
+    </div>
+    <div class="display-f align-center">
+      <a-breadcrumb>
+        <span slot="separator"
+              style="color: orange;">--</span>
+        <a-breadcrumb-item>Home</a-breadcrumb-item>
+        <a-breadcrumb-item href="">First-Step</a-breadcrumb-item>
+        <a-breadcrumb-item href="">Second-Step</a-breadcrumb-item>
+      </a-breadcrumb>
+    </div>
     <a-row style="height: 100px;">
       <a-col :span="8">col-8</a-col>
       <a-col :span="8">col-8</a-col>
@@ -52,7 +68,42 @@
     </a-row>
     <a-row style="height: 500px;">
       <a-affix :offsetBottom="this.bottom">
-        <a-button></a-button>
+        <a-dropdown :placement="placement">
+          <a-button>Affix bottom ({{ placement }})</a-button>
+          <a-menu slot="overlay">
+            <a-menu-item>
+              <a target="_blank"
+                 rel="noopener noreferrer"
+                 href="http://localhost:8080/about">to About</a>
+            </a-menu-item>
+            <a-menu-item>
+              <a target="_blank"
+                 rel="noopener noreferrer"
+                 href="http://localhost:8080/">to Home</a>
+            </a-menu-item>
+            <a-menu-item>
+              <a target="_blank"
+                 rel="noopener noreferrer"
+                 href="http://localhost:8080/antTest">to AntTest</a>
+            </a-menu-item>
+          </a-menu>
+        </a-dropdown>
+      </a-affix>
+      <a-affix :offsetBottom="100"
+               @change="change">
+        <a-dropdown-button @click="handleButtonClick">Dropdown Button
+          <a-menu slot="overlay"
+                  @click="handleMenuClick">
+            <a-menu-item key="1">
+              <a-icon type="user" />1st menu item
+            </a-menu-item>
+            <a-menu-item key="2">
+              <a-icon type="star" />2nd menu item</a-menu-item>
+            <a-menu-item key="3">
+              <a-icon type="heart" />3rd menu item</a-menu-item>
+
+          </a-menu>
+        </a-dropdown-button>
       </a-affix>
     </a-row>
   </v-container>
